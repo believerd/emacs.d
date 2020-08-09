@@ -1,0 +1,44 @@
+* Basics
+#+BEGIN_SRC emacs-lisp
+(tool-bar-mode -1)
+(menu-bar-mode -1)
+(scroll-bar-mode -1)
+(setq backup-directory-alist (quote (("." . "~/.emacs.d/autobackups"))))
+(setq inhibit-startup-message t)
+#+END_SRC
+
+Improve Performance
+#+BEGIN_SRC emacs-lisp
+(defvar best-gc-cons-threshold
+  4000000
+  "Best default gc threshold value.  Should NOT be too big!")
+#+END_SRC
+Set up package
+#+BEGIN_SRC emacs-lisp
+(require 'package)
+(setq package-enable-at-startup nil)
+(setq package-archives '(("melpa" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+	        	 ("gnu"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+			 ("org"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")))
+(package-initialize)
+#+END_SRC
+
+* Packages
+** use-package
+#+BEGIN_SRC emacs-lisp
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+#+END_SRC
+** try
+#+BEGIN_SRC emacs-lisp
+(use-package try
+  :ensure t)
+#+END_SRC
+** which-key
+#+BEGIN_SRC emacs-lisp
+(use-package which-key
+  :ensure t
+  :config
+  (which-key-mode))
+#+END_SRC
