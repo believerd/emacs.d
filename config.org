@@ -22,7 +22,14 @@ Set up package
 			 ("org"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")))
 (package-initialize)
 #+END_SRC
+** theme
+#+BEGIN_SRC emacs-lisp
+(use-package gruvbox-theme
+  :ensure t
+  :config 
+  (load-theme 'gruvbox-dark-hard t))
 
+#+END_SRC
 * Packages
 ** use-package
 #+BEGIN_SRC emacs-lisp
