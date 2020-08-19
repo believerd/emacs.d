@@ -1,4 +1,5 @@
 * Basics
+** common
 #+BEGIN_SRC emacs-lisp
 (tool-bar-mode -1)
 (menu-bar-mode -1)
@@ -13,6 +14,7 @@ Improve Performance
   4000000
   "Best default gc threshold value.  Should NOT be too big!")
 #+END_SRC
+
 Set up package
 #+BEGIN_SRC emacs-lisp
 (require 'package)
@@ -22,6 +24,7 @@ Set up package
 			 ("org"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")))
 (package-initialize)
 #+END_SRC
+
 ** theme
 #+BEGIN_SRC emacs-lisp
 (use-package gruvbox-theme
