@@ -45,6 +45,7 @@ Set up package
 (use-package try
   :ensure t)
 #+END_SRC
+
 ** which-key
 #+BEGIN_SRC emacs-lisp
 (use-package which-key
@@ -105,3 +106,20 @@ Set up package
   :config
   (dashboard-setup-startup-hook))
 #+END_SRC
+** org-roam
+#+BEGIN_SRC emacs-lisp
+(use-package org-roam
+      :ensure t
+      :hook
+      (after-init . org-roam-mode)
+      :custom
+      (org-roam-directory "~/Sync/org")
+      :bind (:map org-roam-mode-map
+              (("C-c n l" . org-roam)
+               ("C-c n f" . org-roam-find-file)
+               ("C-c n g" . org-roam-graph-show))
+              :map org-mode-map
+              (("C-c n i" . org-roam-insert))
+              (("C-c n I" . org-roam-insert-immediate))))
+#+END_SRC
+
