@@ -2,6 +2,19 @@
 ;;; Believerd's Emacs Config
 ;;;------------------------------------------
 
+;; Bootstrap use-package
+(require 'package)
+(setq package-enable-at-startup nil)
+(setq package-archives '(("melpa" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+	        	 ("gnu"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+			 ("org"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")))
+(package-initialize)
+
+;; Better gc
+(defvar best-gc-cons-threshold
+  4000000
+  "Best default gc threshold value.  Should NOT be too big!")
+
 ;; Use org to config emacs
 (require 'org)
 (org-babel-load-file (expand-file-name "~/.emacs.d/config.org"))
