@@ -30,6 +30,7 @@
 (scroll-bar-mode -1)
 (show-paren-mode 1)
 (linum-mode 1)
+(global-hl-line-mode t)
 (setq inhibit-startup-message t)
 #+END_SRC
 * Misc
@@ -139,7 +140,6 @@
   (global-set-key (kbd "C-c v") 'ivy-push-view)
   (global-set-key (kbd "C-c V") 'ivy-pop-view))
 #+END_SrC
-
 ** projectile
 #+BEGIN_SRC emacs-lisp
 (use-package projectile
@@ -148,3 +148,4 @@
   (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
 #+END_SRC
+
