@@ -143,12 +143,11 @@
 ** projectile
 #+BEGIN_SRC emacs-lisp
 (use-package projectile
+  :bind (:map projectile-mode-map
+         ("C-c p" . projectile-command-map)))
   :config
   (projectile-mode +1)
-  (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
-  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
 #+END_SRC
-
 ** company
 #+BEGIN_SrC emacs-lisp
 (use-package company
