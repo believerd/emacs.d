@@ -156,3 +156,8 @@
   (global-company-mode 1))
 #+END_SRC
 
+** flycheck
+#+BEGIN_SrC emacs-lisp
+(use-package flycheck
+  :init (global-flycheck-mode))
+#+END_SRC
