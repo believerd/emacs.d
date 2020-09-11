@@ -14,6 +14,8 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
+(setq use-package-always-ensure t)
+
 ;; Better gc
 (defvar best-gc-cons-threshold
   4000000
