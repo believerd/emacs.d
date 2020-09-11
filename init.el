@@ -10,6 +10,10 @@
 			 ("org"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")))
 (package-initialize)
 
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
 ;; Better gc
 (defvar best-gc-cons-threshold
   4000000
