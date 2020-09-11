@@ -149,3 +149,10 @@
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
 #+END_SRC
 
+** company
+#+BEGIN_SrC emacs-lisp
+(use-package company
+  :config
+  (global-company-mode 1))
+#+END_SRC
+
