@@ -128,3 +128,11 @@
               (("C-c n I" . org-roam-insert-immediate))))
 #+END_SRC
 
+** magit
+#+BEGIN_SRC emacs-lisp
+(use-package magit
+  :ensure t
+  :config (global-set-key (kbd "C-x g") 'magit-status))
+#+END_SRC
+
+
