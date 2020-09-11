@@ -118,7 +118,8 @@
 ** magit
 #+BEGIN_SRC emacs-lisp
 (use-package magit
-  :config (global-set-key (kbd "C-x g") 'magit-status))
+  :bind
+  ("C-x g" . magit-status))
 #+END_SRC
 
 ** counsel along with ivy&swiper
