@@ -2,7 +2,6 @@
 ** Theme and modeline
 #+BEGIN_SRC emacs-lisp
 (use-package doom-themes
-  :ensure t
   :config
   ;; Global settings (defaults)
   (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
@@ -22,7 +21,6 @@
   (doom-themes-org-config))
 
 (use-package doom-modeline
-  :ensure t
   :init (doom-modeline-mode 1))
 #+END_SRC
 ** Better defaults
@@ -43,20 +41,17 @@
 
 ** try
 #+BEGIN_SRC emacs-lisp
-(use-package try
-  :ensure t)
+(use-package try)
 #+END_SRC
 ** which-key
 #+BEGIN_SRC emacs-lisp
 (use-package which-key
-  :ensure t
   :config
   (which-key-mode))
 #+END_SRC
 ** pyim
 #+BEGIN_SRC emacs-lisp
 (use-package pyim
-  :ensure nil
   :demand t
   :config
   ;; 激活 basedict 拼音词库，五笔用户请继续阅读 README
@@ -102,14 +97,12 @@
 ** dashboard
 #+BEGIN_SRC emacs-lisp
 (use-package dashboard
-  :ensure t
   :config
   (dashboard-setup-startup-hook))
 #+END_SRC
 ** org-roam
 #+BEGIN_SRC emacs-lisp
 (use-package org-roam
-      :ensure t
       :hook
       (after-init . org-roam-mode)
       :custom
@@ -122,11 +115,9 @@
               (("C-c n i" . org-roam-insert))
               (("C-c n I" . org-roam-insert-immediate))))
 #+END_SRC
-
 ** magit
 #+BEGIN_SRC emacs-lisp
 (use-package magit
-  :ensure t
   :config (global-set-key (kbd "C-x g") 'magit-status))
 #+END_SRC
 
