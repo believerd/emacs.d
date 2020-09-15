@@ -180,3 +180,19 @@
   (nyan-mode))
 #+END_SRC
 
+* Org-mode
+#+BEGIN_SRC emacs-lisp
+(setq org-directory "~/Sync/org/")
+(setq org-agenda-files (list "inbox.org"))
+
+(setq org-capture-templates
+      '(("i" "Inbox" entry  (file "inbox.org")
+         "* TODO %?\n /Entered on/ %U")))
+
+;; Use full window for org-capture
+;  (add-hook 'org-capture-mode-hook 'delete-other-windows)
+
+(define-key global-map            (kbd "C-c c") 'org-capture)
+(define-key global-map            (kbd "C-c a") 'org-agenda)
+#+END_SRC
+
