@@ -191,7 +191,7 @@
 
 (setq org-capture-templates
        `(("i" "Inbox" entry  (file "inbox.org")
-         ,(concat "* TODO %?\n"
+        ,(concat "* TODO %?\n"
                  "/Entered on/ %U"))))
 
 ;; Use full window for org-capture
