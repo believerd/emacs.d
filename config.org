@@ -182,8 +182,12 @@
 
 * Org-mode
 #+BEGIN_SRC emacs-lisp
+;(require 'org)
 (setq org-directory "~/Sync/org/")
-(setq org-agenda-files (list "inbox.org"))
+(setq org-agenda-files (list "~/Sync/org/inbox.org"))
+;(setq org-agenda-files (list "inbox.org"))
+
+
 
 ;(setq org-capture-templates
 ;      '(("i" "Inbox" entry  (file "inbox.org")
@@ -199,5 +203,6 @@
 
 (define-key global-map            (kbd "C-c c") 'org-capture)
 (define-key global-map            (kbd "C-c a") 'org-agenda)
+
 #+END_SRC
 
