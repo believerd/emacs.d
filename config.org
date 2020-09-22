@@ -185,7 +185,8 @@
 ;(require 'org)
 (setq org-directory "~/Sync/org/")
 (setq org-agenda-files (list "~/Sync/org/inbox.org"))
-;(setq org-agenda-files (list "inbox.org"))
+
+;(setq org-agenda-files (list "./inbox.org"))
 
 
 
