@@ -201,6 +201,8 @@
         ,(concat "* TODO %?\n"
                  "/Entered on/ %U"))))
 
+(setq org-agenda-hide-tags-regexp ".")
+
 ;; Use full window for org-capture
 ;  (add-hook 'org-capture-mode-hook 'delete-other-windows)
 
