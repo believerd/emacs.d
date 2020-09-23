@@ -201,7 +201,8 @@
         ,(concat "* TODO %?\n"
                  "/Entered on/ %U"))))
 
-(setq org-agenda-hide-tags-regexp ".")
+;(setq org-agenda-hide-tags-regexp ".")
+
 (setq org-agenda-prefix-format
       '((agenda . " %i %-12:c%?-12t% s")
         (todo   . " ")
