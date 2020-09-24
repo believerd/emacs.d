@@ -35,6 +35,12 @@
 (setq inhibit-startup-message t)
 #+END_SRC
 
+** Font
+#+BEGIN_SRC emacs-lisp
+(add-to-list 'default-frame-alist '(font . "JetBrains Mono-12" ))
+(set-face-attribute 'default t :font "JetBrains Mono-12" )
+#+END_SRC
+
 * Misc
 #+BEGIN_SRC emacs-lisp
 (setq backup-directory-alist (quote (("." . "~/.emacs.d/autobackups"))))
