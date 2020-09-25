@@ -1,3 +1,6 @@
+#+TITLE: Emacs Configuration
+#+STARTUP: showstars content
+
 * UI
 ** Theme and modeline
 #+BEGIN_SRC emacs-lisp
