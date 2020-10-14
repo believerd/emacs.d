@@ -201,6 +201,19 @@
   (nyan-mode))
 #+END_SRC
 
+** helpful
+#+BEGIN_SRC emacs-lisp
+(use-package helpful
+  :custom
+  (counsel-describe-function-function #'helpful-callable)
+  (counsel-describe-variable-function #'helpful-variable)
+  :bind
+  ([remap describe-function] . counsel-describe-function)
+  ([remap describe-command] . helpful-command)
+  ([remap describe-variable] . counsel-describe-variable)
+  ([remap describe-key] . helpful-key))
+#+END_SRC
+
 * Org-mode
 #+BEGIN_SRC emacs-lisp
 ;(require 'org)
