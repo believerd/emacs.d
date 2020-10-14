@@ -36,6 +36,7 @@
 (tooltip-mode -1)
 (show-paren-mode 1)
 (global-linum-mode 1)
+(column-number-mode 1)
 (global-hl-line-mode t)
 (set-fringe-mode 10)
 (setq visible-bell t)
