@@ -36,6 +36,8 @@
 (show-paren-mode 1)
 (global-linum-mode 1)
 (global-hl-line-mode t)
+(set-fringe-mode 10)
+(setq visible-bell t)
 (setq inhibit-startup-message t)
 #+END_SRC
 
