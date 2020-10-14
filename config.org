@@ -40,8 +40,12 @@
 
 ** Font
 #+BEGIN_SRC emacs-lisp
-(add-to-list 'default-frame-alist '(font . "JetBrains Mono-11"))
-(set-face-attribute 'default t :font "JetBrains Mono-11")
+(add-to-list 'default-frame-alist '(font . "JetBrains Mono-10.5"))
+(set-face-attribute 'default t :font "JetBrains Mono-10.5")
+
+;(add-to-list 'default-frame-alist '(font . "Source Code Pro-11"))
+;(set-face-attribute 'default t :font "Source Code Pro-11")
+
 #+END_SRC
 
 ** Window Split
@@ -180,7 +184,7 @@
 (use-package company
   :config
   (global-company-mode 1)
-  (setq company-idle-delay 0.0))
+  (setq company-idle-delay 0.1))
 #+END_SRC
 
 ** flycheck
@@ -232,3 +236,4 @@
 (define-key global-map            (kbd "C-c a") 'org-agenda)
 
 #+END_SRC
+
