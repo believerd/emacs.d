@@ -48,12 +48,6 @@
 
 #+END_SRC
 
-** Window Split
-#+BEGIN_SRC emacs-lisp
-;split horizontally 1
-;      vertically   nil
-;(setq split-width-threshold 1)
-#+END_SRC
 
 * Misc
 #+BEGIN_SRC emacs-lisp
