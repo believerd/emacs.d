@@ -10,8 +10,6 @@
 	        	 ("gnu"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
 			 ("org"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")))
 (package-initialize)
-(unless package-archive-contents
-  (package-refresh-contents))
 
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
