@@ -46,9 +46,10 @@
 
 ** Font
 #+BEGIN_SRC emacs-lisp
-(add-to-list 'default-frame-alist '(font . "JetBrains Mono-10.5"))
-(set-face-attribute 'default t :font "JetBrains Mono-10.5")
+;(add-to-list 'default-frame-alist '(font . "JetBrains Mono-10.5"))
+;(set-face-attribute 'default t :font "JetBrains Mono-10.5")
 
+(set-face-attribute 'default nil :font "Fira Code Retina" :height 120)
 ;(add-to-list 'default-frame-alist '(font . "Fira Code-10.5"))
 ;(set-face-attribute 'default t :font "Fira Code-10.5")
 ;(set-face-attribute 'default nil :font "Fira Code-10.5")
@@ -56,7 +57,6 @@
 ;(set-face-attribute 'default t :font "Source Code Pro-11")
 
 #+END_SRC
-
 
 * Misc
 #+BEGIN_SRC emacs-lisp
@@ -260,3 +260,4 @@
 
 #+END_SRC
 
+* Keybinding
