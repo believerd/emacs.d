@@ -215,6 +215,7 @@
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 )
 #+END_SRC
+
 ** evil
 Let's be evil!
 
@@ -232,7 +233,6 @@ Let's be evil!
   :after evil
   :config
   (evil-collection-init))
-
 #+END_SRC
 
 * Org-mode
