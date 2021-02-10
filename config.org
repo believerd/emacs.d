@@ -217,9 +217,7 @@
 ** rainbow-delimiters
 #+BEGIN_SRC emacs-lisp
 (use-package rainbow-delimiters
-  :config
-  (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
-)
+  :hook (prog-mode . rainbow-delimiters-mode))
 #+END_SRC
 
 ** evil
