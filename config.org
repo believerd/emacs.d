@@ -171,6 +171,10 @@
          :map ivy-minibuffer-map
          ("C-j" . ivy-next-line)
          ("C-k" . ivy-previous-line)))
+         
+(use-package ivy-rich
+  :init
+  (ivy-rich-mode 1))
 #+END_SrC
 
 ** projectile
