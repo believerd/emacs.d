@@ -159,6 +159,8 @@
 (use-package counsel
   :init
   (ivy-mode 1)
+  :config
+  (setq ivy-initial-inputs-alist nil) ;;Do not start search with ^
   :bind (("C-s" . swiper-isearch)
          ("M-x" . counsel-M-x)
          ("C-x C-f" . counsel-find-file)
