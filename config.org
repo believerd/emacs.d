@@ -35,11 +35,17 @@
 (scroll-bar-mode -1)
 (tooltip-mode -1)
 (show-paren-mode 1)
-;(global-linum-mode 1)
 (global-display-line-numbers-mode 1)
+;; Disable line-numbers-mode for some cases
+(dolist (mode '(org-mode-hook
+                term-mode-hook
+                shell-mode-hook
+                eshell-mode-hook))
+  (add-hook mode (lambda () (display-line-numbers-mode 0))))
+
 (column-number-mode 1)
 (global-hl-line-mode t)
-(set-fringe-mode 10)
+(set-fringe-mode 5)
 (setq visible-bell t)
 (setq inhibit-startup-message t)
 #+END_SRC
