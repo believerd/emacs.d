@@ -249,6 +249,16 @@ Let's be evil!
   (evil-collection-init))
 #+END_SRC
 
+** hydra
+#+BEGIN_SRC emacs-lisp
+(use-package hydra)
+
+(defhydra hydra-text-sclae (:timeout 4)
+  "scale-text"
+  ("j" text-scale-increase "in")
+  ("k" text-scale-decrease "out")
+  ("f" nil "finished" :exit t))
+#+END_SRC
 * Org-mode
 #+BEGIN_SRC emacs-lisp
 ;(require 'org)
