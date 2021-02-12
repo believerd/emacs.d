@@ -258,9 +258,6 @@ Let's be evil!
   ("j" text-scale-increase "in")
   ("k" text-scale-decrease "out")
   ("q" nil "quit" :exit t))
- 
-(b/leader-keys
-  "ts" '(hydra-text-scale/body :which-key "scale-text"))
 #+END_SRC
 ** general
 #+BEGIN_SRC emacs-lisp
@@ -273,7 +270,8 @@ Let's be evil!
     
 (b/leader-keys
   "t" '(:ignore t :which-key "toggles")
-  "tt" '(counsel-load-theme :which-key "choose theme")))
+  "tt" '(counsel-load-theme :which-key "choose theme")
+  "ts" '(hydra-text-scale/body :which-key "scale-text")))
 #+END_SRC
 * Org-mode
 #+BEGIN_SRC emacs-lisp
