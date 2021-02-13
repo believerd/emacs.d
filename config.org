@@ -146,6 +146,7 @@
   :after org
   :hook (org-mode . org-bullets-mode))
 #+END_SRC
+
 ** org-roam
 #+BEGIN_SRC emacs-lisp
 (use-package org-roam
@@ -285,6 +286,7 @@ Let's be evil!
   ("k" text-scale-decrease "out")
   ("q" nil "quit" :exit t))
 #+END_SRC
+
 ** general
 #+BEGIN_SRC emacs-lisp
 (use-package general
@@ -299,6 +301,7 @@ Let's be evil!
   "tt" '(counsel-load-theme :which-key "choose theme")
   "ts" '(hydra-text-scale/body :which-key "scale-text")))
 #+END_SRC
+
 * Org-mode
 #+BEGIN_SRC emacs-lisp
 ;(require 'org)
