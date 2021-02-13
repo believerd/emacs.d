@@ -133,7 +133,12 @@
 
 ** org
 #+BEGIN_SRC emacs-lisp
+(defun b/org-mode-setup()
+  (org-indent-mode)
+  (visual-line-mode 1))
+
 (use-package org
+  :hook (org-mode . b/org-mode-setup)
   :config
   (setq org-ellipsis " ▾"))
 
