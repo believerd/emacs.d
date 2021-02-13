@@ -183,9 +183,13 @@
 #+BEGIN_SRC emacs-lisp
 (use-package projectile
   :bind (:map projectile-mode-map
-         ("C-c p" . projectile-command-map)))
+         ("C-c p" . projectile-command-map))
   :config
-  (projectile-mode +1)
+  (projectile-mode)
+  :init
+  (when (file-directory-p "~/Sync/code")
+    (setq projectile-project-search-path '("~/Sync/code")))
+  (setq projectile-switch-project-action #'projectile-dired))
 #+END_SRC
 
 ** company
