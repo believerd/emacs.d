@@ -131,6 +131,16 @@
   (dashboard-setup-startup-hook))
 #+END_SRC
 
+** org
+#+BEGIN_SRC emacs-lisp
+(use-package org
+  :config
+  (setq org-ellipsis " ▾"))
+
+(use-package org-bullets
+  :after org
+  :hook (org-mode . org-bullets-mode))
+#+END_SRC
 ** org-roam
 #+BEGIN_SRC emacs-lisp
 (use-package org-roam
@@ -156,7 +166,7 @@
   (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
 #+END_SRC
 
-** counsel along with ivy & swiper
+** counsel & ivy & swiper
 #+BEGIN_SRC emacs-lisp
 (use-package counsel
   :init
