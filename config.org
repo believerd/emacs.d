@@ -1,6 +1,44 @@
 #+TITLE: Emacs Configuration
+#+PROPERTY: header-args:emacs-lisp :tangle ./init.el :mkdirp yes
 #+STARTUP: showstars content indent
 
+* Bootstrap
+** Package System Setup
+#+begin_src emacs-lisp
+;;; init.el -*- lexical-binding: t; -*-
+
+;; Bootstrap use-package
+(require 'package)
+(setq package-archives '(("melpa" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+	        	 ("gnu"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+			 ("org"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")))
+(package-initialize)
+
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+(require 'use-package)
+(setq use-package-always-ensure t)
+#+end_src
+** Garbage Collection
+#+begin_src emacs-lisp
+(defvar best-gc-cons-threshold
+  4000000
+  "Best default gc threshold value.  Should NOT be too big!")
+#+end_src
+** Auto-tangle Configuration Files
+#+begin_src emacs-lisp
+;; Automatically tangle our config.org config file when we save it
+(defun b/org-babel-tangle-config ()
+  (when (string-equal (buffer-file-name)
+        (expand-file-name "~/.emacs.d/config.org"))
+    ;; Dynamic scoping to the rescue
+    (let ((org-confirm-babel-evaluate nil))
+      (org-babel-tangle))))
+
+(add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'b/org-babel-tangle-config)))
+#+end_src
 * UI
 ** Theme and modeline
 #+BEGIN_SRC emacs-lisp
@@ -158,7 +196,7 @@
   (advice-add 'org-refile :after 'org-save-all-org-buffers)
 
   (setq org-capture-templates
-       `(("i" "Inbox" entry  (file "inbox.org")
+       `(("i" "Inbox" entry  (file "tasks.org")
         ,(concat "* TODO %?\n"
                  "/Entered on/ %U")))))
 
@@ -336,3 +374,4 @@ Let's be evil!
 #+END_SRC
 
 * Keybinding
+
