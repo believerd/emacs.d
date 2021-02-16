@@ -28,34 +28,16 @@
 
 (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'b/org-babel-tangle-config)))
 
-(use-package doom-themes
-  :config
-  ;; Global settings (defaults)
-  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
-        doom-themes-enable-italic t) ; if nil, italics is universally disabled
-  (load-theme 'doom-gruvbox t)
+(setq backup-directory-alist (quote (("." . "~/.emacs.d/autobackups"))))
 
-  ;; Enable flashing mode-line on errors
-  (doom-themes-visual-bell-config)
-  
-  ;; Enable custom neotree theme (all-the-icons must be installed!)
-  (doom-themes-neotree-config)
-  ;; or for treemacs users
-  ;(setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
-  (doom-themes-treemacs-config)
-  
-  ;; Corrects (and improves) org-mode's native fontification.
-  (doom-themes-org-config))
-
-(use-package doom-modeline
-  :init (doom-modeline-mode 1)
-  :custom ((doom-modeline-height 15)))
+(global-auto-revert-mode 1)
 
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
 (tooltip-mode -1)
 (show-paren-mode 1)
+
 (global-display-line-numbers-mode 1)
 ;; Disable line-numbers-mode for some cases
 (dolist (mode '(org-mode-hook
@@ -70,67 +52,37 @@
 (setq visible-bell t)
 (setq inhibit-startup-message t)
 
-(set-face-attribute 'default nil :font "Jetbrains Mono" :height 105)
+(use-package doom-themes
+  :config
+  ;; Global settings (defaults)
+  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+        doom-themes-enable-italic t) ; if nil, italics is universally disabled
+  (load-theme 'doom-gruvbox t)
 
+  ;; Enable flashing mode-line on errors
+  (doom-themes-visual-bell-config)
+  
+  ;; Enable custom neotree theme (all-the-icons must be installed!)
+  ;(doom-themes-neotree-config)
+  ;; or for treemacs users
+  ;(setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
+  ;(doom-themes-treemacs-config)
+  
+  ;; Corrects (and improves) org-mode's native fontification.
+  (doom-themes-org-config))
+
+(use-package doom-modeline
+  :init (doom-modeline-mode 1)
+  :custom ((doom-modeline-height 15)))
+
+(set-face-attribute 'default nil :font "Jetbrains Mono" :height 105)
 ;(set-face-attribute 'default nil :font "Fira Code Retina" :height 110)
 
-(setq backup-directory-alist (quote (("." . "~/.emacs.d/autobackups"))))
-(global-auto-revert-mode 1)
-
-(use-package try)
-
-(use-package which-key
-  :init
-  (which-key-mode)
-  :config
-  (setq which-key-idle-delay 0.3))
-
-(use-package pyim
-  :demand t
-  :config
-  ;; 激活 basedict 拼音词库，五笔用户请继续阅读 README
-  (use-package pyim-basedict
-    :ensure nil
-    :config (pyim-basedict-enable))
-
-  (setq default-input-method "pyim")
-
-  ;; 我使用全拼
-  (setq pyim-default-scheme 'quanpin)
-
-  ;; 设置 pyim 探针设置，这是 pyim 高级功能设置，可以实现 *无痛* 中英文切换 :-)
-  ;; 我自己使用的中英文动态切换规则是：
-  ;; 1. 光标只有在注释里面时，才可以输入中文。
-  ;; 2. 光标前是汉字字符时，才能输入中文。
-  ;; 3. 使用 M-j 快捷键，强制将光标前的拼音字符串转换为中文。
-;  (setq-default pyim-english-input-switch-functions
-;                '(pyim-probe-dynamic-english
-;                  pyim-probe-isearch-mode
-;                  pyim-probe-program-mode
-;                  pyim-probe-org-structure-template))
-
-  (setq-default pyim-punctuation-half-width-functions
-                '(pyim-probe-punctuation-line-beginning
-                  pyim-probe-punctuation-after-punctuation))
-
-  ;; 开启拼音搜索功能
-  (pyim-isearch-mode 1)
-
-  ;; 使用 popup-el 来绘制选词框, 如果用 emacs26, 建议设置
-  ;; 为 'posframe, 速度很快并且菜单不会变形，不过需要用户
-  ;; 手动安装 posframe 包。
-  (setq pyim-page-tooltip 'popup)
-
-  ;; 选词框显示5个候选词
-  (setq pyim-page-length 5)
-
+(use-package magit
   :bind
-  (("M-j" . pyim-convert-string-at-point) ;与 pyim-probe-dynamic-english 配合
-   ("C-;" . pyim-delete-word-from-personal-buffer)))
-
-(use-package dashboard
-  :config
-  (dashboard-setup-startup-hook))
+  ("C-x g" . magit-status)
+  :custom
+  (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
 
 (defun b/org-mode-setup()
   (org-indent-mode)
@@ -191,11 +143,96 @@
           (("C-c n i" . org-roam-insert))
           (("C-c n I" . org-roam-insert-immediate))))
 
-(use-package magit
+(use-package evil
+  :init
+  (setq evil-want-integration t) ;; This is optional since it's already set to t by default.
+  (setq evil-want-keybinding nil)
+  (setq evil-want-C-u-scroll t)
+
+  :config
+  (evil-mode 1))
+  (evil-global-set-key 'motion "j" 'evil-next-visual-line)
+  (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
+
+(use-package evil-collection
+  :after evil
+  :config
+  (evil-collection-init))
+
+(use-package hydra)
+
+(defhydra hydra-text-scale (:timeout 4)
+  "scale-text"
+  ("j" text-scale-increase "in")
+  ("k" text-scale-decrease "out")
+  ("q" nil "quit" :exit t))
+
+(use-package general
+  :config
+  (general-create-definer b/leader-keys
+    :keymaps '(normal insert visual emacs)
+    :prefix "SPC"
+    :global-prefix "C-SPC")
+    
+(b/leader-keys
+  "t" '(:ignore t :which-key "toggles")
+  "tt" '(counsel-load-theme :which-key "choose theme")
+  "ts" '(hydra-text-scale/body :which-key "scale-text")))
+
+(use-package which-key
+  :init
+  (which-key-mode)
+  :config
+  (setq which-key-idle-delay 0.3))
+
+(use-package try)
+
+(use-package pyim
+  :demand t
+  :config
+  ;; 激活 basedict 拼音词库，五笔用户请继续阅读 README
+  (use-package pyim-basedict
+    :ensure nil
+    :config (pyim-basedict-enable))
+
+  (setq default-input-method "pyim")
+
+  ;; 我使用全拼
+  (setq pyim-default-scheme 'quanpin)
+
+  ;; 设置 pyim 探针设置，这是 pyim 高级功能设置，可以实现 *无痛* 中英文切换 :-)
+  ;; 我自己使用的中英文动态切换规则是：
+  ;; 1. 光标只有在注释里面时，才可以输入中文。
+  ;; 2. 光标前是汉字字符时，才能输入中文。
+  ;; 3. 使用 M-j 快捷键，强制将光标前的拼音字符串转换为中文。
+;  (setq-default pyim-english-input-switch-functions
+;                '(pyim-probe-dynamic-english
+;                  pyim-probe-isearch-mode
+;                  pyim-probe-program-mode
+;                  pyim-probe-org-structure-template))
+
+  (setq-default pyim-punctuation-half-width-functions
+                '(pyim-probe-punctuation-line-beginning
+                  pyim-probe-punctuation-after-punctuation))
+
+  ;; 开启拼音搜索功能
+  (pyim-isearch-mode 1)
+
+  ;; 使用 popup-el 来绘制选词框, 如果用 emacs26, 建议设置
+  ;; 为 'posframe, 速度很快并且菜单不会变形，不过需要用户
+  ;; 手动安装 posframe 包。
+  (setq pyim-page-tooltip 'popup)
+
+  ;; 选词框显示5个候选词
+  (setq pyim-page-length 5)
+
   :bind
-  ("C-x g" . magit-status)
-  :custom
-  (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
+  (("M-j" . pyim-convert-string-at-point) ;与 pyim-probe-dynamic-english 配合
+   ("C-;" . pyim-delete-word-from-personal-buffer)))
+
+(use-package dashboard
+  :config
+  (dashboard-setup-startup-hook))
 
 (use-package counsel
   :init
@@ -258,39 +295,3 @@
 
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
-
-(use-package evil
-  :init
-  (setq evil-want-integration t) ;; This is optional since it's already set to t by default.
-  (setq evil-want-keybinding nil)
-  (setq evil-want-C-u-scroll t)
-
-  :config
-  (evil-mode 1))
-  (evil-global-set-key 'motion "j" 'evil-next-visual-line)
-  (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
-
-(use-package evil-collection
-  :after evil
-  :config
-  (evil-collection-init))
-
-(use-package hydra)
-
-(defhydra hydra-text-scale (:timeout 4)
-  "scale-text"
-  ("j" text-scale-increase "in")
-  ("k" text-scale-decrease "out")
-  ("q" nil "quit" :exit t))
-
-(use-package general
-  :config
-  (general-create-definer b/leader-keys
-    :keymaps '(normal insert visual emacs)
-    :prefix "SPC"
-    :global-prefix "C-SPC")
-    
-(b/leader-keys
-  "t" '(:ignore t :which-key "toggles")
-  "tt" '(counsel-load-theme :which-key "choose theme")
-  "ts" '(hydra-text-scale/body :which-key "scale-text")))
