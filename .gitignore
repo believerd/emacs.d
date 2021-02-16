@@ -9,3 +9,7 @@ projectile-bookmarks.eld
 bookmarks
 newsticker/
 .org-id-locations
+eshell/
+forge-database.sqlite
+init-old.el
+org-roam.db
