@@ -164,6 +164,7 @@ Quickly comment lines.
 (use-package evil-nerd-commenter
   :bind ("M-;" . evilnc-comment-or-uncomment-lines))
 #+end_src
+
 ** Languages
 *** Language Server Protocal
 #+begin_src emacs-lisp
@@ -181,8 +182,11 @@ Quickly comment lines.
   ;; if you are ivy user
   (use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
   (use-package lsp-treemacs :commands lsp-treemacs-errors-list)
-  ;; optionally if you want to use debugger
-  (use-package dap-mode)
+#+end_src
+
+*** Debug Adapter Protocol
+#+begin_src emacs-lisp
+(use-package dap-mode)
 #+end_src
 
 * Org
