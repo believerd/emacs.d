@@ -43,12 +43,21 @@
 (dolist (mode '(org-mode-hook
                 term-mode-hook
                 shell-mode-hook
+                vterm-mode-hook
                 treemacs-mode-hook
                 eshell-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
+;; Disable hl-mode for terminals
+(dolist (mode '(term-mode-hook
+                shell-mode-hook
+                vterm-mode-hook
+                eshell-mode-hook))
+  (add-hook mode (lambda () (setq global-hl-line-mode nil))))
+  
 (column-number-mode 1)
 (global-hl-line-mode t)
+(make-variable-buffer-local 'global-hl-line-mode)
 (set-fringe-mode 5)
 (setq visible-bell t)
 (setq inhibit-startup-message t)
@@ -142,6 +151,8 @@
   
 (use-package eterm-256color
   :hook (term-mode . eterm-256color-mode))
+
+(use-package vterm)
 
 (defun b/org-mode-setup()
   (org-indent-mode)
