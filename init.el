@@ -136,6 +136,13 @@
 
 (use-package dap-mode)
 
+(use-package term
+  :config
+  (setq explicit-shell-file-name "/usr/bin/zsh"))
+  
+(use-package eterm-256color
+  :hook (term-mode . eterm-256color-mode))
+
 (defun b/org-mode-setup()
   (org-indent-mode)
   (visual-line-mode 1))

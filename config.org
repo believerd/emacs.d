@@ -82,6 +82,7 @@
 #+begin_src emacs-lisp
 (setq initial-scratch-message ";;Happy Hacking!\n\n")
 #+end_src
+
 ** Theme and Modeline
 #+BEGIN_SRC emacs-lisp
 (use-package doom-themes
@@ -193,6 +194,16 @@ Quickly comment lines.
 (use-package dap-mode)
 #+end_src
 
+** Terminals
+*** Term
+#+begin_src emacs-lisp
+(use-package term
+  :config
+  (setq explicit-shell-file-name "/usr/bin/zsh"))
+  
+(use-package eterm-256color
+  :hook (term-mode . eterm-256color-mode))
+#+end_src
 * Org
 ** Org Basics
 #+BEGIN_SRC emacs-lisp
