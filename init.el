@@ -152,7 +152,8 @@
 (use-package eterm-256color
   :hook (term-mode . eterm-256color-mode))
 
-(use-package vterm)
+(use-package vterm
+  :config (setq vterm-max-scrollback 10000))
 
 (defun b/org-mode-setup()
   (org-indent-mode)

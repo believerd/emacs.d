@@ -216,12 +216,14 @@ Quickly comment lines.
 
 *** Vterm
 Check https://github.com/akermu/emacs-libvterm for more informations.
-You will need some dependencies
+Some dependencies you'll need.
 - cmake
 - libtool
 - GNU Emacs
+
 #+begin_src emacs-lisp
-(use-package vterm)
+(use-package vterm
+  :config (setq vterm-max-scrollback 10000))
 #+end_src
 
 * Org
