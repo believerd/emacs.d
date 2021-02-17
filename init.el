@@ -99,17 +99,19 @@
 (use-package counsel-projectile
   :config (counsel-projectile-mode))
 
-;; (defun b/lsp-mode-setup ()
-;;   (setq lsp-headerline-breadcrumb-segments '(path-up-to-project file symbols))
-;;   (lsp-headerline-breadcrumb-mode))
+(use-package company
+  :after lsp-mode
+  :hook (lsp-mode . company-mode)
+  :bind (:map company-active-map
+         ("<tab>" . company-complete-selection))
+        (:map lsp-mode-map
+         ("<tab>" . company-indent-or-complete-common))
+  :custom
+  (company-minimum-prefix-length 1)
+  (company-idle-delay 0.0))
 
-;; (use-package lsp-mode
-;;   :init
-;;   (setq lsp-keymap-prefix "C-c l")  ;; Or 'C-l', 's-l'
-;;   :commands (lsp lsp-deferred)
-;;   :hook (lsp-mode . b/lsp-mode-setup)
-;;   :config
-;;   (lsp-enable-which-key-integration t))
+(use-package company-box
+  :hook (company-mode . company-box-mode))
 
 (use-package lsp-mode
   :init
@@ -120,16 +122,13 @@
          ;; if you want which-key integration
          (lsp-mode . lsp-enable-which-key-integration))
   :commands lsp lsp-deferred)
-
 ;; optionally
 (use-package lsp-ui :commands lsp-ui-mode)
 ;; if you are ivy user
 (use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
 (use-package lsp-treemacs :commands lsp-treemacs-errors-list)
-
 ;; optionally if you want to use debugger
 (use-package dap-mode)
-;; (use-package dap-LANGUAGE) to load the dap adapter for your language
 
 (defun b/org-mode-setup()
   (org-indent-mode)
@@ -303,13 +302,8 @@
   :init
   (ivy-rich-mode 1))
 
-(use-package company
-  :config
-  (global-company-mode 1)
-  (setq company-idle-delay 0.1))
-
-;; (use-package flycheck
-;;   :init (global-flycheck-mode))
+(use-package flycheck
+  :init (global-flycheck-mode))
 
 (use-package nyan-mode
   :config
