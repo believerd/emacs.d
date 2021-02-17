@@ -53,6 +53,8 @@
 (setq visible-bell t)
 (setq inhibit-startup-message t)
 
+(setq initial-scratch-message ";;Happy Hacking!\n\n")
+
 (use-package doom-themes
   :config
   ;; Global settings (defaults)

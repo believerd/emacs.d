@@ -78,6 +78,10 @@
 (setq inhibit-startup-message t)
 #+END_SRC
 
+** Initial Scratch Buffer
+#+begin_src emacs-lisp
+(setq initial-scratch-message ";;Happy Hacking!\n\n")
+#+end_src
 ** Theme and Modeline
 #+BEGIN_SRC emacs-lisp
 (use-package doom-themes
