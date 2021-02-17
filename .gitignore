@@ -14,3 +14,5 @@ forge-database.sqlite
 init-old.el
 org-roam.db
 .lsp-session-v1
+.cache/
+.dap-breakpoints
