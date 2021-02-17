@@ -114,6 +114,9 @@
 (use-package company-box
   :hook (company-mode . company-box-mode))
 
+(use-package evil-nerd-commenter
+  :bind ("M-;" . evilnc-comment-or-uncomment-lines))
+
 (use-package lsp-mode
   :init
   ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
