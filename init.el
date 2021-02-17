@@ -84,6 +84,53 @@
   :custom
   (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
 
+(use-package projectile
+  :bind (:map projectile-mode-map
+         ("C-c p" . projectile-command-map))
+  :config
+  (projectile-mode)
+  :custom
+  ((projectile-completion-system 'ivy))
+  :init
+  (when (file-directory-p "~/Sync/code")
+    (setq projectile-project-search-path '("~/Sync/code")))
+  (setq projectile-switch-project-action #'projectile-dired))
+
+(use-package counsel-projectile
+  :config (counsel-projectile-mode))
+
+;; (defun b/lsp-mode-setup ()
+;;   (setq lsp-headerline-breadcrumb-segments '(path-up-to-project file symbols))
+;;   (lsp-headerline-breadcrumb-mode))
+
+;; (use-package lsp-mode
+;;   :init
+;;   (setq lsp-keymap-prefix "C-c l")  ;; Or 'C-l', 's-l'
+;;   :commands (lsp lsp-deferred)
+;;   :hook (lsp-mode . b/lsp-mode-setup)
+;;   :config
+;;   (lsp-enable-which-key-integration t))
+
+(use-package lsp-mode
+  :init
+  ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
+  (setq lsp-keymap-prefix "C-c l")
+  :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
+         (python-mode . lsp-deferred)
+         ;; if you want which-key integration
+         (lsp-mode . lsp-enable-which-key-integration))
+  :commands lsp lsp-deferred)
+
+;; optionally
+(use-package lsp-ui :commands lsp-ui-mode)
+;; if you are ivy user
+(use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
+(use-package lsp-treemacs :commands lsp-treemacs-errors-list)
+
+;; optionally if you want to use debugger
+(use-package dap-mode)
+;; (use-package dap-LANGUAGE) to load the dap adapter for your language
+
 (defun b/org-mode-setup()
   (org-indent-mode)
   (visual-line-mode 1))
@@ -130,18 +177,18 @@
   '((emacs-lisp . t)
     (python . t)))
 
-(use-package org-roam
-  :hook
-  (after-init . org-roam-mode)
-  :custom
-  (org-roam-directory "~/Sync/org")
-  :bind (:map org-roam-mode-map
-          (("C-c n l" . org-roam)
-           ("C-c n f" . org-roam-find-file)
-           ("C-c n g" . org-roam-graph-show))
-          :map org-mode-map
-          (("C-c n i" . org-roam-insert))
-          (("C-c n I" . org-roam-insert-immediate))))
+;; (use-package org-roam
+;;   :hook
+;;   (after-init . org-roam-mode)
+;;   :custom
+;;   (org-roam-directory "~/Sync/org")
+;;   :bind (:map org-roam-mode-map
+;;           (("C-c n l" . org-roam)
+;;            ("C-c n f" . org-roam-find-file)
+;;            ("C-c n g" . org-roam-graph-show))
+;;           :map org-mode-map
+;;           (("C-c n i" . org-roam-insert))
+;;           (("C-c n I" . org-roam-insert-immediate))))
 
 (use-package evil
   :init
@@ -256,28 +303,13 @@
   :init
   (ivy-rich-mode 1))
 
-(use-package projectile
-  :bind (:map projectile-mode-map
-         ("C-c p" . projectile-command-map))
-  :config
-  (projectile-mode)
-  :custom
-  ((projectile-completion-system 'ivy))
-  :init
-  (when (file-directory-p "~/Sync/code")
-    (setq projectile-project-search-path '("~/Sync/code")))
-  (setq projectile-switch-project-action #'projectile-dired))
-
-(use-package counsel-projectile
-  :config (counsel-projectile-mode))
-
 (use-package company
   :config
   (global-company-mode 1)
   (setq company-idle-delay 0.1))
 
-(use-package flycheck
-  :init (global-flycheck-mode))
+;; (use-package flycheck
+;;   :init (global-flycheck-mode))
 
 (use-package nyan-mode
   :config
