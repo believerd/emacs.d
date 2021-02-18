@@ -226,6 +226,19 @@ Some dependencies you'll need.
   :config (setq vterm-max-scrollback 10000))
 #+end_src
 
+** File Management
+*** Dired
+#+begin_src emacs-lisp
+(use-package dired
+  :ensure nil
+  :commands (dired dired-jump)
+  :bind (("C-x C-j" . dired-jump))
+  :config
+  (evil-collection-define-key 'normal 'dired-mode-map
+    "h" 'dired-up-directory
+    "l" 'dired-find-file))
+#+end_src
+
 * Org
 ** Org Basics
 #+BEGIN_SRC emacs-lisp
@@ -295,6 +308,13 @@ Some dependencies you'll need.
 ** Pomodoro
 #+begin_src emacs-lisp
 (use-package org-pomodoro)
+#+end_src
+
+** Blog
+*** ox-hugo
+#+begin_src emacs-lisp
+(use-package ox-hugo
+  :after ox)
 #+end_src
 
 * Keybindings

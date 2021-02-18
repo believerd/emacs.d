@@ -155,6 +155,15 @@
 (use-package vterm
   :config (setq vterm-max-scrollback 10000))
 
+(use-package dired
+  :ensure nil
+  :commands (dired dired-jump)
+  :bind (("C-x C-j" . dired-jump))
+  :config
+  (evil-collection-define-key 'normal 'dired-mode-map
+    "h" 'dired-up-directory
+    "l" 'dired-find-file))
+
 (defun b/org-mode-setup()
   (org-indent-mode)
   (visual-line-mode 1))
@@ -215,6 +224,9 @@
 ;;           (("C-c n I" . org-roam-insert-immediate))))
 
 (use-package org-pomodoro)
+
+(use-package ox-hugo
+  :after ox)
 
 (use-package evil
   :init
