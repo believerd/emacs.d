@@ -214,6 +214,8 @@
 ;;           (("C-c n i" . org-roam-insert))
 ;;           (("C-c n I" . org-roam-insert-immediate))))
 
+(use-package org-pomodoro)
+
 (use-package evil
   :init
   (setq evil-want-integration t) ;; This is optional since it's already set to t by default.

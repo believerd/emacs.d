@@ -292,7 +292,12 @@ Some dependencies you'll need.
   ;;           (("C-c n I" . org-roam-insert-immediate))))
 #+END_SRC
 
-* Keybinding
+** Pomodoro
+#+begin_src emacs-lisp
+(use-package org-pomodoro)
+#+end_src
+
+* Keybindings
 ** evil
 Let's be evil!
 
