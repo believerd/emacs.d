@@ -90,6 +90,48 @@
 (set-face-attribute 'default nil :font "Jetbrains Mono" :height 105)
 ;(set-face-attribute 'default nil :font "Fira Code Retina" :height 110)
 
+(use-package evil
+  :init
+  (setq evil-want-integration t) ;; This is optional since it's already set to t by default.
+  (setq evil-want-keybinding nil)
+  (setq evil-want-C-u-scroll t)
+
+  :config
+  (evil-mode 1))
+  (evil-global-set-key 'motion "j" 'evil-next-visual-line)
+  (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
+
+(use-package evil-collection
+  :after evil
+  :config
+  (evil-collection-init))
+
+(use-package hydra)
+
+(defhydra hydra-text-scale (:timeout 4)
+  "scale-text"
+  ("j" text-scale-increase "in")
+  ("k" text-scale-decrease "out")
+  ("q" nil "quit" :exit t))
+
+(use-package general
+  :config
+  (general-create-definer b/leader-keys
+    :keymaps '(normal insert visual emacs)
+    :prefix "SPC"
+    :global-prefix "C-SPC")
+    
+(b/leader-keys
+  "t" '(:ignore t :which-key "toggles")
+  "tt" '(counsel-load-theme :which-key "choose theme")
+  "ts" '(hydra-text-scale/body :which-key "scale-text")))
+
+(use-package which-key
+  :init
+  (which-key-mode)
+  :config
+  (setq which-key-idle-delay 0.3))
+
 (use-package magit
   :bind
   ("C-x g" . magit-status)
@@ -157,7 +199,6 @@
 
 (use-package dired
   :ensure nil
-  :after evil-collection
   :commands (dired dired-jump)
   :bind (("C-x C-j" . dired-jump))
   :custom ((dired-listing-switches "-agho --group-directories-first"))
@@ -249,48 +290,6 @@
 
 (use-package ox-hugo
   :after ox)
-
-(use-package evil
-  :init
-  (setq evil-want-integration t) ;; This is optional since it's already set to t by default.
-  (setq evil-want-keybinding nil)
-  (setq evil-want-C-u-scroll t)
-
-  :config
-  (evil-mode 1))
-  (evil-global-set-key 'motion "j" 'evil-next-visual-line)
-  (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
-
-(use-package evil-collection
-  :after evil
-  :config
-  (evil-collection-init))
-
-(use-package hydra)
-
-(defhydra hydra-text-scale (:timeout 4)
-  "scale-text"
-  ("j" text-scale-increase "in")
-  ("k" text-scale-decrease "out")
-  ("q" nil "quit" :exit t))
-
-(use-package general
-  :config
-  (general-create-definer b/leader-keys
-    :keymaps '(normal insert visual emacs)
-    :prefix "SPC"
-    :global-prefix "C-SPC")
-    
-(b/leader-keys
-  "t" '(:ignore t :which-key "toggles")
-  "tt" '(counsel-load-theme :which-key "choose theme")
-  "ts" '(hydra-text-scale/body :which-key "scale-text")))
-
-(use-package which-key
-  :init
-  (which-key-mode)
-  :config
-  (setq which-key-idle-delay 0.3))
 
 (use-package try)
 

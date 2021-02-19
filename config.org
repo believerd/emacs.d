@@ -124,6 +124,63 @@
 ;(set-face-attribute 'default nil :font "Fira Code Retina" :height 110)
 #+END_SRC
 
+* Keybindings
+** evil
+Let's be evil!
+
+#+BEGIN_SRC emacs-lisp
+(use-package evil
+  :init
+  (setq evil-want-integration t) ;; This is optional since it's already set to t by default.
+  (setq evil-want-keybinding nil)
+  (setq evil-want-C-u-scroll t)
+
+  :config
+  (evil-mode 1))
+  (evil-global-set-key 'motion "j" 'evil-next-visual-line)
+  (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
+
+(use-package evil-collection
+  :after evil
+  :config
+  (evil-collection-init))
+#+END_SRC
+
+** hydra
+#+BEGIN_SRC emacs-lisp
+(use-package hydra)
+
+(defhydra hydra-text-scale (:timeout 4)
+  "scale-text"
+  ("j" text-scale-increase "in")
+  ("k" text-scale-decrease "out")
+  ("q" nil "quit" :exit t))
+#+END_SRC
+
+** general
+#+BEGIN_SRC emacs-lisp
+(use-package general
+  :config
+  (general-create-definer b/leader-keys
+    :keymaps '(normal insert visual emacs)
+    :prefix "SPC"
+    :global-prefix "C-SPC")
+    
+(b/leader-keys
+  "t" '(:ignore t :which-key "toggles")
+  "tt" '(counsel-load-theme :which-key "choose theme")
+  "ts" '(hydra-text-scale/body :which-key "scale-text")))
+#+END_SRC
+
+** which-key
+#+BEGIN_SRC emacs-lisp
+(use-package which-key
+  :init
+  (which-key-mode)
+  :config
+  (setq which-key-idle-delay 0.3))
+#+END_SRC
+
 * Development
 ** Version Control & Projects Management
 *** magit
@@ -231,7 +288,6 @@ Some dependencies you'll need.
 #+begin_src emacs-lisp
 (use-package dired
   :ensure nil
-  :after evil-collection
   :commands (dired dired-jump)
   :bind (("C-x C-j" . dired-jump))
   :custom ((dired-listing-switches "-agho --group-directories-first"))
@@ -338,63 +394,6 @@ Some dependencies you'll need.
 (use-package ox-hugo
   :after ox)
 #+end_src
-
-* Keybindings
-** evil
-Let's be evil!
-
-#+BEGIN_SRC emacs-lisp
-(use-package evil
-  :init
-  (setq evil-want-integration t) ;; This is optional since it's already set to t by default.
-  (setq evil-want-keybinding nil)
-  (setq evil-want-C-u-scroll t)
-
-  :config
-  (evil-mode 1))
-  (evil-global-set-key 'motion "j" 'evil-next-visual-line)
-  (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
-
-(use-package evil-collection
-  :after evil
-  :config
-  (evil-collection-init))
-#+END_SRC
-
-** hydra
-#+BEGIN_SRC emacs-lisp
-(use-package hydra)
-
-(defhydra hydra-text-scale (:timeout 4)
-  "scale-text"
-  ("j" text-scale-increase "in")
-  ("k" text-scale-decrease "out")
-  ("q" nil "quit" :exit t))
-#+END_SRC
-
-** general
-#+BEGIN_SRC emacs-lisp
-(use-package general
-  :config
-  (general-create-definer b/leader-keys
-    :keymaps '(normal insert visual emacs)
-    :prefix "SPC"
-    :global-prefix "C-SPC")
-    
-(b/leader-keys
-  "t" '(:ignore t :which-key "toggles")
-  "tt" '(counsel-load-theme :which-key "choose theme")
-  "ts" '(hydra-text-scale/body :which-key "scale-text")))
-#+END_SRC
-
-** which-key
-#+BEGIN_SRC emacs-lisp
-(use-package which-key
-  :init
-  (which-key-mode)
-  :config
-  (setq which-key-idle-delay 0.3))
-#+END_SRC
 
 * Packages
 ** try
