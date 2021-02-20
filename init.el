@@ -214,7 +214,7 @@
   :hook (dired-mode . all-the-icons-dired-mode))
 
 (use-package dired-open
-  :commands (dired dired-jump)
+  ;; :commands (dired dired-jump)
   :config
   ;; Doesn't work as expected!
   ;;(add-to-list 'dired-open-functions #'dired-open-xdg t)
@@ -382,3 +382,10 @@
 
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
+
+(use-package auto-package-update
+  :config 
+  (auto-package-update-maybe)
+  (setq auto-package-update-prompt-before-update t)
+  (setq auto-package-update-hide-results t)
+  :hook (auto-package-update-before-hook . (lambda () (message "Updating packages!"))))
