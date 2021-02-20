@@ -350,6 +350,7 @@
          ("C-x C-f" . counsel-find-file)
          ("M-y" . counsel-yank-pop)
          ("C-x b" . ivy-switch-buffer)
+         ("C-h b" . counsel-descbinds)
          :map ivy-switch-buffer-map
          ("C-k" . ivy-previous-line)
          ("C-l" . ivy-done)
