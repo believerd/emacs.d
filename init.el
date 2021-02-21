@@ -384,9 +384,11 @@
   :hook (prog-mode . rainbow-delimiters-mode))
 
 (use-package auto-package-update
-  :config 
-  (auto-package-update-maybe)
+  :custom
   (setq auto-package-update-interval 14)
   (setq auto-package-update-prompt-before-update t)
   (setq auto-package-update-hide-results t)
+  :config
+  (auto-package-update-maybe)
+  (auto-package-update-at-time "19:00")
   :hook (auto-package-update-before-hook . (lambda () (message "Updating packages!"))))
