@@ -385,9 +385,9 @@
 
 (use-package auto-package-update
   :custom
-  (setq auto-package-update-interval 14)
-  (setq auto-package-update-prompt-before-update t)
-  (setq auto-package-update-hide-results t)
+  (auto-package-update-interval 14)
+  (auto-package-update-prompt-before-update t)
+  (auto-package-update-hide-results t)
   :config
   (auto-package-update-maybe)
   (auto-package-update-at-time "19:00")
