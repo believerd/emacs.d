@@ -521,3 +521,4 @@ Some dependencies you'll need.
   (setq auto-package-update-hide-results t)
   :hook (auto-package-update-before-hook . (lambda () (message "Updating packages!"))))
 #+end_src
+
