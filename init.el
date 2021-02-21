@@ -386,6 +386,7 @@
 (use-package auto-package-update
   :config 
   (auto-package-update-maybe)
+  (setq auto-package-update-interval 14)
   (setq auto-package-update-prompt-before-update t)
   (setq auto-package-update-hide-results t)
   :hook (auto-package-update-before-hook . (lambda () (message "Updating packages!"))))
