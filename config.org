@@ -53,6 +53,17 @@
 (global-auto-revert-mode 1)
 #+end_src
 
+* Startup Performance
+#+begin_src emacs-lisp
+(defun b/display-startup-time ()
+  (message "Emacs loaded in %s with %d garbage collections."
+           (format "%.2f seconds"
+                   (float-time
+                   (time-subtract after-init-time before-init-time)))
+           gcs-done))
+
+(add-hook 'emacs-startup-hook #'b/display-startup-time)
+#+end_src
 * UI
 ** Basic UI Configuration
 #+BEGIN_SRC emacs-lisp
