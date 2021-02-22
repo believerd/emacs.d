@@ -3,6 +3,13 @@
 #+STARTUP: showstars content indent
 
 * Bootstrap
+** Garbage Collection
+#+begin_src emacs-lisp
+(defvar best-gc-cons-threshold
+  4000000
+  "Best default gc threshold value.  Should NOT be too big!")
+#+end_src
+
 ** Package System Setup
 #+begin_src emacs-lisp
 ;;; init.el -*- lexical-binding: t; -*-
@@ -20,13 +27,6 @@
 
 (require 'use-package)
 (setq use-package-always-ensure t)
-#+end_src
-
-** Garbage Collection
-#+begin_src emacs-lisp
-(defvar best-gc-cons-threshold
-  4000000
-  "Best default gc threshold value.  Should NOT be too big!")
 #+end_src
 
 ** Auto-tangle Configuration Files

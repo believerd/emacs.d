@@ -1,3 +1,7 @@
+(defvar best-gc-cons-threshold
+  4000000
+  "Best default gc threshold value.  Should NOT be too big!")
+
 ;;; init.el -*- lexical-binding: t; -*-
 
 ;; Bootstrap use-package
@@ -13,10 +17,6 @@
 
 (require 'use-package)
 (setq use-package-always-ensure t)
-
-(defvar best-gc-cons-threshold
-  4000000
-  "Best default gc threshold value.  Should NOT be too big!")
 
 ;; Automatically tangle our config.org config file when we save it
 (defun b/org-babel-tangle-config ()
