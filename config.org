@@ -490,6 +490,7 @@ Some dependencies you'll need.
          ("C-k" . ivy-previous-line)))
          
 (use-package ivy-rich
+  :after ivy
   :init
   (ivy-rich-mode 1))
 #+END_SrC
@@ -537,5 +538,17 @@ Some dependencies you'll need.
   (auto-package-update-maybe)
   (auto-package-update-at-time "19:00")
   :hook (auto-package-update-before-hook . (lambda () (message "Updating packages!"))))
+#+end_src
+
+** youdao-dictionary
+#+begin_src emacs-lisp
+(use-package youdao-dictionary
+  :defer t
+  :bind ("C-c d" . youdao-dictionary-search-from-input)
+  :config
+  (evil-collection-define-key 'normal 'youdao-dictionary-mode-map
+  "q" 'kill-buffer-and-window)
+  :custom
+  (setq url-automatic-caching t))
 #+end_src
 

@@ -371,6 +371,7 @@
          ("C-k" . ivy-previous-line)))
          
 (use-package ivy-rich
+  :after ivy
   :init
   (ivy-rich-mode 1))
 
@@ -403,3 +404,12 @@
   (auto-package-update-maybe)
   (auto-package-update-at-time "19:00")
   :hook (auto-package-update-before-hook . (lambda () (message "Updating packages!"))))
+
+(use-package youdao-dictionary
+  :defer t
+  :bind ("C-c d" . youdao-dictionary-search-from-input)
+  :config
+  (evil-collection-define-key 'normal 'youdao-dictionary-mode-map
+  "q" 'kill-buffer-and-window)
+  :custom
+  (setq url-automatic-caching t))
