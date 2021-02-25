@@ -8,6 +8,8 @@
 (defvar best-gc-cons-threshold
   4000000
   "Best default gc threshold value.  Should NOT be too big!")
+  
+(setq gc-cons-threshold best-gc-cons-threshold)
 #+end_src
 
 ** Package System Setup
