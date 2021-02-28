@@ -1,4 +1,5 @@
 (defvar best-gc-cons-threshold 4000000)
+;; test more on the value!
 
 ;; Set gc-cons-thread to the best after emacs-startup.
 (add-hook 'emacs-startup-hook(lambda () (setq gc-cons-threshold best-gc-cons-threshold)))
