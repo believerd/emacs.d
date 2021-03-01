@@ -133,11 +133,18 @@
     :prefix "SPC"
     :global-prefix "C-SPC")
     
+;; define my functions
+(defun b/open-config-file ()
+  "Quickly open config file"
+  (interactive)
+  (find-file (expand-file-name "~/.emacs.d/config.org")))
+
 (b/leader-keys
   "t" '(:ignore t :which-key "toggles")
   "tt" '(counsel-load-theme :which-key "choose theme")
   "ts" '(hydra-text-scale/body :which-key "scale-text")
-  "fc" '(lambda () (interactive) (find-file (expand-file-name "~/.emacs.d/config.org")))))
+  "fc" '(b/open-config-file :which-key "config-file")))
+  ;; "fc" '(lambda () (interactive) (find-file (expand-file-name "~/.emacs.d/config.org")))))
 
 (use-package which-key
   :init
