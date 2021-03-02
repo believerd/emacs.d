@@ -144,7 +144,6 @@
   "tt" '(counsel-load-theme :which-key "choose theme")
   "ts" '(hydra-text-scale/body :which-key "scale-text")
   "fc" '(b/open-config-file :which-key "config-file")))
-  ;; "fc" '(lambda () (interactive) (find-file (expand-file-name "~/.emacs.d/config.org")))))
 
 (use-package which-key
   :init
