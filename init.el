@@ -1,3 +1,5 @@
+(setq b/fontname "Jetbrains Mono")
+
 (defvar best-gc-cons-threshold 4000000)
 ;; test more on the value!
 
@@ -99,7 +101,8 @@
   :init (doom-modeline-mode 1)
   :custom ((doom-modeline-height 15)))
 
-(set-face-attribute 'default nil :font "Jetbrains Mono" :height 105)
+;; (set-face-attribute 'default nil :font "Jetbrains Mono" :height 105)
+(set-face-attribute 'default nil :font b/fontname :height 105)
 ;(set-face-attribute 'default nil :font "Fira Code Retina" :height 110)
 
 (use-package evil

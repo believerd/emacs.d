@@ -3,6 +3,10 @@
 #+STARTUP: showstars content indent
 
 * Bootstrap
+** Variables
+#+begin_src emacs-lisp
+(setq b/fontname "Jetbrains Mono")
+#+end_src
 ** Garbage Collection
 #+begin_src emacs-lisp
 (defvar best-gc-cons-threshold 4000000)
@@ -135,7 +139,8 @@
 
 ** Font
 #+BEGIN_SRC emacs-lisp
-(set-face-attribute 'default nil :font "Jetbrains Mono" :height 105)
+;; (set-face-attribute 'default nil :font "Jetbrains Mono" :height 105)
+(set-face-attribute 'default nil :font b/fontname :height 105)
 ;(set-face-attribute 'default nil :font "Fira Code Retina" :height 110)
 #+END_SRC
 
