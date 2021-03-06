@@ -241,6 +241,7 @@
   ;;(add-to-list 'dired-open-functions #'dired-open-xdg t)
   (setq dired-open-extensions '(("png" . "feh")
                                 ("mp4" . "mpv")
+                                ("mp3" . "mpv --force-window")
                                 ("MOV" . "mpv")
                                 ("mkv" . "mpv"))))
 
