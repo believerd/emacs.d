@@ -347,6 +347,17 @@ Some dependencies you'll need.
     "H" 'dired-hide-dotfiles-mode))
 #+end_src
 
+** Undo-system
+*** Undo-tree
+Needed for evil-redo-system.
+
+#+begin_src emacs-lisp
+(use-package undo-tree
+  :init
+  (global-undo-tree-mode)
+)
+#+end_src
+
 * Org
 ** Org Basics
 #+BEGIN_SRC emacs-lisp

@@ -251,6 +251,11 @@
   (evil-collection-define-key 'normal 'dired-mode-map
     "H" 'dired-hide-dotfiles-mode))
 
+(use-package undo-tree
+  :init
+  (global-undo-tree-mode)
+)
+
 (defun b/org-mode-setup()
   (org-indent-mode)
   (visual-line-mode 1))
