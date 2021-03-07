@@ -109,11 +109,10 @@
   (setq evil-want-integration t) ;; This is optional since it's already set to t by default.
   (setq evil-want-keybinding nil)
   (setq evil-want-C-u-scroll t)
-
+  :custom
+  (evil-undo-system 'undo-tree)
   :config
   (evil-mode 1))
-  (evil-global-set-key 'motion "j" 'evil-next-visual-line)
-  (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
 
 (use-package evil-collection
   :after evil
