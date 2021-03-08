@@ -228,6 +228,7 @@
     "l" 'dired-single-buffer))
 
 (use-package dired-single
+  :after dired
   :commands (dired dired-jump))
 
 (use-package all-the-icons-dired
