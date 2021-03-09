@@ -128,6 +128,7 @@
   ("q" nil "quit" :exit t))
 
 (use-package general
+  :demand t
   :config
   (general-create-definer b/leader-keys
     :keymaps '(normal insert visual emacs)
