@@ -324,7 +324,7 @@
 (use-package try)
 
 (use-package pyim
-  :demand t
+  :defer t
   :config
   ;; 激活 basedict 拼音词库，五笔用户请继续阅读 README
   (use-package pyim-basedict
