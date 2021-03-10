@@ -142,15 +142,18 @@
 
 (b/leader-keys
   "t" '(:ignore t :which-key "toggles")
+  "f" '(:ignore t :which-key "files")
   "tt" '(counsel-load-theme :which-key "choose theme")
   "ts" '(hydra-text-scale/body :which-key "scale-text")
-  "fc" '(b/open-config-file :which-key "config-file")))
+  "ff" '(find-file :which-key "find-file")
+  "fc" '(b/open-config-file :which-key "config")))
 
 (use-package which-key
-  :init
-  (which-key-mode)
   :config
-  (setq which-key-idle-delay 0.3))
+  (which-key-mode)
+  (setq which-key-prefix-prefix ""
+        which-key-idle-delay 0.3)
+)
 
 (use-package magit
   :bind
