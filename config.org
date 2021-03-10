@@ -5,7 +5,7 @@
 * Bootstrap
 ** Variables
 #+begin_src emacs-lisp
-(setq b/fontname "Jetbrains Mono")
+(defconst b/fontname "Jetbrains Mono")
 #+end_src
 
 ** Garbage Collection

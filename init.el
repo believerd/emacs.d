@@ -1,4 +1,4 @@
-(setq b/fontname "Jetbrains Mono")
+(defconst b/fontname "Jetbrains Mono")
 
 (defvar best-gc-cons-threshold 4000000)
 ;; test more on the value!
