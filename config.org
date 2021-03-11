@@ -3,6 +3,12 @@
 #+STARTUP: showstars content indent
 
 * Bootstrap
+** Header
+#+begin_src emacs-lisp
+;;; init.el -*- lexical-binding: t; -*-
+
+#+end_src
+
 ** Variables
 #+begin_src emacs-lisp
 (defconst b/fontname "Jetbrains Mono")
@@ -20,8 +26,6 @@
 
 ** Package System Setup
 #+begin_src emacs-lisp
-;;; init.el -*- lexical-binding: t; -*-
-
 ;; Bootstrap use-package
 (require 'package)
 (setq package-archives '(("melpa" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")

@@ -1,3 +1,5 @@
+;;; init.el -*- lexical-binding: t; -*-
+
 (defconst b/fontname "Jetbrains Mono")
 
 (defvar best-gc-cons-threshold 4000000)
@@ -6,8 +8,6 @@
 ;; Set gc-cons-thread to the best after emacs-startup.
 (add-hook 'emacs-startup-hook(lambda () (setq gc-cons-threshold best-gc-cons-threshold)))
 ;; Good for now, check [[https:gitlab.com/koral/gcmh][gcmh]] someday.
-
-;;; init.el -*- lexical-binding: t; -*-
 
 ;; Bootstrap use-package
 (require 'package)
