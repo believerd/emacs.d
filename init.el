@@ -151,8 +151,7 @@
 (use-package which-key
   :config
   (which-key-mode)
-  (setq which-key-prefix-prefix ""
-        which-key-idle-delay 0.3)
+  (setq which-key-idle-delay 0.3)
 )
 
 (use-package magit
