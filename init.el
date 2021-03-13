@@ -2,10 +2,12 @@
 
 (defconst b/fontname "Jetbrains Mono")
 
-(defvar best-gc-cons-threshold 4000000)
-;; test more on the value!
+;; Set gc-cons-thread to the best after emacs-startup and set up gc-timer.
+(defvar best-gc-cons-threshold 4000000
+  "Best gc cons threshold value.")
+(defvar auto-gc-timer (run-with-idle-timer 10 t #'garbage-collect)
+  "Run garbarge collection when idle 10s.")
 
-;; Set gc-cons-thread to the best after emacs-startup.
 (add-hook 'emacs-startup-hook(lambda () (setq gc-cons-threshold best-gc-cons-threshold)))
 ;; Good for now, check [[https:gitlab.com/koral/gcmh][gcmh]] someday.
 
