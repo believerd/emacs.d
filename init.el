@@ -39,6 +39,8 @@
 
 (global-auto-revert-mode 1)
 
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+
 (defun b/display-startup-time ()
   (message "Emacs loaded in %s with %d garbage collections."
            (format "%.2f seconds"

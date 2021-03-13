@@ -67,6 +67,10 @@
 (global-auto-revert-mode 1)
 #+end_src
 
+*** Custome file
+#+begin_src emacs-lisp
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+#+end_src
 * Startup Performance
 #+begin_src emacs-lisp
 (defun b/display-startup-time ()
