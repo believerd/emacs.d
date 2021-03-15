@@ -55,8 +55,14 @@
 (scroll-bar-mode -1)
 (tooltip-mode -1)
 (show-paren-mode 1)
-
 (global-display-line-numbers-mode 1)
+(column-number-mode 1)
+(global-hl-line-mode t)
+(make-variable-buffer-local 'global-hl-line-mode)
+(set-fringe-mode 5)
+(setq visible-bell t)
+(setq inhibit-startup-message t)
+
 ;; Disable line-numbers-mode for some cases
 (dolist (mode '(org-mode-hook
                 term-mode-hook
@@ -72,13 +78,6 @@
                 vterm-mode-hook
                 eshell-mode-hook))
   (add-hook mode (lambda () (setq global-hl-line-mode nil))))
-  
-(column-number-mode 1)
-(global-hl-line-mode t)
-(make-variable-buffer-local 'global-hl-line-mode)
-(set-fringe-mode 5)
-(setq visible-bell t)
-(setq inhibit-startup-message t)
 
 (setq initial-scratch-message ";;Happy Hacking!\n\n")
 
@@ -105,7 +104,6 @@
   :init (doom-modeline-mode 1)
   :custom ((doom-modeline-height 15)))
 
-;; (set-face-attribute 'default nil :font "Jetbrains Mono" :height 105)
 (set-face-attribute 'default nil :font b/fontname :height 105)
 
 (use-package evil
