@@ -5,11 +5,19 @@
 ;; Set gc-cons-thread to the best after emacs-startup and set up gc-timer.
 (defvar best-gc-cons-threshold 4000000
   "Best gc cons threshold value.")
-(defvar auto-gc-timer (run-with-idle-timer 10 t #'garbage-collect)
-  "Run garbarge collection when idle 10s.")
+;; (defvar auto-gc-timer (run-with-idle-timer 10 t #'garbage-collect)
+;;   "Run garbarge collection when idle 10s.")
 
 (add-hook 'emacs-startup-hook(lambda () (setq gc-cons-threshold best-gc-cons-threshold)))
 ;; Good for now, check [[https:gitlab.com/koral/gcmh][gcmh]] someday.
+
+(defun my-cleanup-gc ()
+  "Clean up gc."
+  (setq gc-cons-threshold  67108864) ; 64M
+  (setq gc-cons-percentage 0.1) ; original value
+  (garbage-collect))
+
+(run-with-idle-timer 4 nil #'my-cleanup-gc)
 
 ;; Bootstrap use-package
 (require 'package)
