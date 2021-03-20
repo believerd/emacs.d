@@ -18,3 +18,5 @@ org-roam.db
 .dap-breakpoints
 .last-package-update-day
 url/
+custom.el
+eaf/
