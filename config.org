@@ -452,11 +452,6 @@ Needed for evil-redo-system.
 #+end_src
 
 * Packages
-** try
-#+BEGIN_SRC emacs-lisp
-(use-package try)
-#+END_SRC
-
 ** pyim
 #+BEGIN_SRC emacs-lisp
 (use-package pyim

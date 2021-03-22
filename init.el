@@ -328,8 +328,6 @@
 (use-package ox-hugo
   :after ox)
 
-(use-package try)
-
 (use-package pyim
   :defer t
   :config
