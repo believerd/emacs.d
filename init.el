@@ -364,7 +364,7 @@
   :diminish (dashboard-mode)
   :init
   (setq dashboard-center-content nil
-        dashboard-banner-logo-title "Happy Hacking! Beliver!"
+        dashboard-banner-logo-title "Happy Hacking! Believer!"
         dashboard-show-shortcuts nil
         dashboard-items '((recents  . 10)
                           (agenda . 10)
