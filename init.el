@@ -425,7 +425,6 @@
   :config
   (auto-package-update-maybe)
   (auto-package-update-at-time "19:00")
-  :hook (auto-package-update-before-hook . (lambda () (message "Updating packages!"))))
 
 (use-package youdao-dictionary
   :defer t
