@@ -424,7 +424,7 @@
   (auto-package-update-hide-results t)
   :config
   (auto-package-update-maybe)
-  (auto-package-update-at-time "19:00")
+  (auto-package-update-at-time "19:00"))
 
 (use-package youdao-dictionary
   :defer t
@@ -440,4 +440,4 @@
   :commands (markdown-mode gfm-mode)
   :mode (("README\\.md\\'" . gfm-mode)
          ("\\.md\\'" . markdown-mode)
-         ("\\.markdown\\'" . markdown-mode))
+         ("\\.markdown\\'" . markdown-mode)))
