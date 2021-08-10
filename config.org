@@ -375,52 +375,53 @@ Needed for evil-redo-system.
 * Org
 ** Org Basics
 #+BEGIN_SRC emacs-lisp
-(defun b/org-mode-setup()
-  (org-indent-mode)
-  (visual-line-mode 1))
-
-(use-package org
-  :hook (org-mode . b/org-mode-setup)
-  :bind
-  (("C-c a" . org-agenda)
-   ("C-c c" . org-capture))
-  :config
-  (setq org-directory "~/Sync/org/")
-  (setq org-agenda-files
-    '("~/Sync/org/tasks.org"
-	  "~/Sync/org/birthdays.org"))
-
-  (setq org-agenda-start-with-log-mode t)
-  (setq org-log-done 'time)
-  (setq org-log-into-drawer t)
-  (setq org-ellipsis " ▾")
+  (defun b/org-mode-setup()
+    (org-indent-mode)
+    (visual-line-mode 1))
   
-  (setq org-refile-targets
-    '(("archive.org" :maxlevel . 1)))
-  (advice-add 'org-refile :after 'org-save-all-org-buffers)
-
-  (setq org-capture-templates
-       `(("i" "Inbox" entry  (file "tasks.org")
-        ,(concat "* TODO %?\n"
-                 "/Entered on/ %U")))))
-
-
-(use-package org-bullets
-  :after org
-  :hook (org-mode . org-bullets-mode))
+  (use-package org
+    :hook (org-mode . b/org-mode-setup)
+    :bind
+    (("C-c a" . org-agenda)
+     ("C-c c" . org-capture))
+    :config
+    (setq org-directory "~/Sync/org/")
+    (setq org-agenda-files
+      '("~/Sync/org/tasks.org"
+            "~/Sync/org/birthdays.org"))
   
-;;Use "<el" <Tab> to quickly expand a org elisp src block
-(require 'org-tempo)
-(add-to-list 'org-structure-template-alist '("sh" . "src shell"))
-(add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
-(add-to-list 'org-structure-template-alist '("py" . "src python"))
-
-;;Load org babel languages
-(with-eval-after-load 'org
-  (org-babel-do-load-languages
-    'org-babel-load-languages
-    '((emacs-lisp . t)
-     (python . t))))
+    (setq org-agenda-start-with-log-mode t)
+    (setq org-log-done 'time)
+    (setq org-log-into-drawer t)
+    (setq org-ellipsis " ▾")
+  
+    (setq org-refile-targets
+      '(("archive.org" :maxlevel . 1)))
+    (advice-add 'org-refile :after 'org-save-all-org-buffers)
+  
+    (setq org-capture-templates
+         `(("i" "Inbox" entry  (file "tasks.org")
+          ,(concat "* TODO %?\n"
+                   "/Entered on/ %U")))))
+  
+  
+  (use-package org-bullets
+    :after org
+    :hook (org-mode . org-bullets-mode))
+  
+  ;;Use "<el" <Tab> to quickly expand a org elisp src block
+  (require 'org-tempo)
+  (add-to-list 'org-structure-template-alist '("sh" . "src shell"))
+  (add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
+  (add-to-list 'org-structure-template-alist '("py" . "src python"))
+  
+  ;;Load org babel languages
+  (with-eval-after-load 'org
+    (org-babel-do-load-languages
+      'org-babel-load-languages
+      '((emacs-lisp . t)
+        (shell . t)
+        (python . t))))
 #+END_SRC
 
 ** org-roam

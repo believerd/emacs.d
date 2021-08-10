@@ -276,13 +276,13 @@
   (setq org-directory "~/Sync/org/")
   (setq org-agenda-files
     '("~/Sync/org/tasks.org"
-	  "~/Sync/org/birthdays.org"))
+          "~/Sync/org/birthdays.org"))
 
   (setq org-agenda-start-with-log-mode t)
   (setq org-log-done 'time)
   (setq org-log-into-drawer t)
   (setq org-ellipsis " ▾")
-  
+
   (setq org-refile-targets
     '(("archive.org" :maxlevel . 1)))
   (advice-add 'org-refile :after 'org-save-all-org-buffers)
@@ -296,7 +296,7 @@
 (use-package org-bullets
   :after org
   :hook (org-mode . org-bullets-mode))
-  
+
 ;;Use "<el" <Tab> to quickly expand a org elisp src block
 (require 'org-tempo)
 (add-to-list 'org-structure-template-alist '("sh" . "src shell"))
@@ -308,7 +308,8 @@
   (org-babel-do-load-languages
     'org-babel-load-languages
     '((emacs-lisp . t)
-     (python . t))))
+      (shell . t)
+      (python . t))))
 
 (use-package org-roam
   :ensure t
