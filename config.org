@@ -166,20 +166,21 @@
 Let's be evil!
 
 #+BEGIN_SRC emacs-lisp
-(use-package evil
-  :init
-  (setq evil-want-integration t) ;; This is optional since it's already set to t by default.
-  (setq evil-want-keybinding nil)
-  (setq evil-want-C-u-scroll t)
-  :custom
-  (evil-undo-system 'undo-tree)
-  :config
-  (evil-mode 1))
-
-(use-package evil-collection
-  :after evil
-  :config
-  (evil-collection-init))
+  (use-package evil
+    :init
+    (setq evil-want-integration t) ;; This is optional since it's already set to t by default.
+    (setq evil-want-keybinding nil)
+    (setq evil-want-C-u-scroll t)
+    (setq evil-want-C-i-jump nil)
+    :custom
+    (evil-undo-system 'undo-tree)
+    :config
+    (evil-mode 1))
+  
+  (use-package evil-collection
+    :after evil
+    :config
+    (evil-collection-init))
 #+END_SRC
 
 ** hydra
@@ -311,17 +312,17 @@ Quickly comment lines.
   :hook (term-mode . eterm-256color-mode))
 #+end_src
 
-*** Vterm
-Check https://github.com/akermu/emacs-libvterm for more informations.
-Some dependencies you'll need.
-- cmake
-- libtool
-- GNU Emacs
+*** Vterm (compiling issues, commented fornow)
+# Check https://github.com/akermu/emacs-libvterm for more informations.
+# Some dependencies you'll need.
+# - cmake
+# - libtool
+# - GNU Emacs
 
-#+begin_src emacs-lisp
-(use-package vterm
-  :config (setq vterm-max-scrollback 10000))
-#+end_src
+# #+begin_src emacs-lisp
+# (use-package vterm
+#   :config (setq vterm-max-scrollback 10000))
+# #+end_src
 
 ** File Management
 *** Dired

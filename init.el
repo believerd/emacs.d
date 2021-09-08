@@ -119,6 +119,7 @@
   (setq evil-want-integration t) ;; This is optional since it's already set to t by default.
   (setq evil-want-keybinding nil)
   (setq evil-want-C-u-scroll t)
+  (setq evil-want-C-i-jump nil)
   :custom
   (evil-undo-system 'undo-tree)
   :config
@@ -220,9 +221,6 @@
   
 (use-package eterm-256color
   :hook (term-mode . eterm-256color-mode))
-
-(use-package vterm
-  :config (setq vterm-max-scrollback 10000))
 
 (use-package dired
   :ensure nil
